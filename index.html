@@ -278,6 +278,11 @@
             padding: 100px 20px;
             background: linear-gradient(180deg, var(--cream) 0%, #FFE5ED 100%);
             text-align: center;
+            display: none;
+        }
+
+        .date-time-section.visible {
+            display: block;
         }
 
         .date-time-container {
@@ -986,19 +991,23 @@
                 
                 successMessage.classList.add('active');
                 
-                // After 2 seconds, hide overlay and scroll to date section
+                // After 2 seconds, hide overlay, reveal date section, and scroll to it
                 setTimeout(() => {
                     successMessage.classList.remove('active');
                     
-                    // Scroll to date/time section
+                    // Show and scroll to date/time section
                     const dateSection = document.getElementById('dateTime');
                     if (dateSection) {
-                        dateSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        dateSection.classList.add('visible');
                         
-                        // Add a pulse effect to the date section
                         setTimeout(() => {
-                            dateSection.querySelector('.date-time-container').style.animation = 'pulse 0.5s ease-out';
-                        }, 500);
+                            dateSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            
+                            // Add a pulse effect to the date section
+                            setTimeout(() => {
+                                dateSection.querySelector('.date-time-container').style.animation = 'pulse 0.5s ease-out';
+                            }, 500);
+                        }, 100);
                     }
                 }, 2000);
             }
