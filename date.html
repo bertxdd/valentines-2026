@@ -7,6 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your public key
+        // REPLACE 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        (function(){
+            emailjs.init('99bTMB66BTfKoyA6z');
+        })();
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -481,10 +492,34 @@
             // Create sparkle effect
             createSparkles();
             
+            // Send email via EmailJS
+            sendEmailNotification(formattedDate, formattedTime);
+            
             // Scroll to confirmation
             setTimeout(() => {
                 confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);
+        }
+
+        // Send email notification
+        function sendEmailNotification(date, time) {
+            // Email template parameters
+            const templateParams = {
+                to_email: 'franzrobertp@gmail.com', // REPLACE with your Gmail address
+                date: date,
+                time: time,
+                message: `Your Valentine has chosen a date!\n\nDate: ${date}\nTime: ${time}`
+            };
+
+            // Send email using EmailJS
+            // REPLACE 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
+            emailjs.send('service_b5xzlx8', 'template_xlzozab', templateParams)
+                .then(function(response) {
+                    console.log('Email sent successfully!', response.status, response.text);
+                }, function(error) {
+                    console.error('Failed to send email:', error);
+                    // Still show success to user even if email fails
+                });
         }
 
         // Create sparkles
