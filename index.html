@@ -683,6 +683,17 @@
                 transform: translateY(-60px) scale(0.5);
             }
         }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 15px 40px rgba(231, 84, 128, 0.25);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 20px 50px rgba(231, 84, 128, 0.4);
+            }
+        }
     </style>
 </head>
 <body>
@@ -959,26 +970,37 @@
 
         // ==================== SUCCESS ANIMATION ==================== 
         function showSuccess(response) {
-            const successMessage = document.getElementById('successMessage');
-            const emoji = document.getElementById('successEmoji');
-            const title = document.getElementById('successTitle');
-            const text = document.getElementById('successText');
-
             if (response === 'yes' || response === 'maybe') {
-                emoji.textContent = '🎉';
-                title.textContent = 'Yes! You\'ve Made Me So Happy!';
-                text.textContent = 'This is going to be the most amazing Valentine\'s Day! 💖✨';
-                
-                // Show success overlay
-                successMessage.classList.add('active');
-                
                 // Create confetti effect
                 createConfetti();
                 
-                // Auto-hide after 4 seconds
+                // Show brief success overlay
+                const successMessage = document.getElementById('successMessage');
+                const emoji = document.getElementById('successEmoji');
+                const title = document.getElementById('successTitle');
+                const text = document.getElementById('successText');
+                
+                emoji.textContent = '🎉';
+                title.textContent = 'Yay! Let\'s pick a date! 💕';
+                text.textContent = 'Scroll down to choose when our date should be!';
+                
+                successMessage.classList.add('active');
+                
+                // After 2 seconds, hide overlay and scroll to date section
                 setTimeout(() => {
                     successMessage.classList.remove('active');
-                }, 4000);
+                    
+                    // Scroll to date/time section
+                    const dateSection = document.getElementById('dateTime');
+                    if (dateSection) {
+                        dateSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        // Add a pulse effect to the date section
+                        setTimeout(() => {
+                            dateSection.querySelector('.date-time-container').style.animation = 'pulse 0.5s ease-out';
+                        }, 500);
+                    }
+                }, 2000);
             }
         }
 
