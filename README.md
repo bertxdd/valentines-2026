@@ -1,6 +1,6 @@
 # 💖 Romantic Valentine's Day Website
 
-A beautiful, responsive HTML Valentine's Day website to ask someone to be your Valentine. Fully customizable with no backend required.
+A beautiful, responsive HTML Valentine's Day website to ask someone to be your Valentine with an interactive date picker. Fully customizable with no backend required.
 
 ## 🌹 Features
 
@@ -9,10 +9,22 @@ A beautiful, responsive HTML Valentine's Day website to ask someone to be your V
 🎵 **Background Music Toggle** - Optional romantic music player
 ❤️ **Floating Hearts Animation** - Subtle animated hearts in the background
 🖼️ **Photo Gallery** - Polaroid-style image gallery with hover effects
-💌 **Love Message Section** - Heartfelt message about your feelings
+📅 **Interactive Date & Time Picker** - Let her choose when your date should be
+💌 **Valentine Question** - Two playful buttons ("Yes" and "Of course")
 🎉 **Success Animation** - Confetti and celebration effects when she says yes
+✨ **Sparkle Effects** - Beautiful sparkle animation when date is confirmed
 📱 **Google Fonts** - Beautiful typography with Playfair Display, Dancing Script, and Montserrat
 🔧 **Easy to Customize** - Simple configuration at the top of the JavaScript
+
+---
+
+## 📋 Website Flow
+
+1. **Hero Section** - Greeting with her name and Valentine question preview
+2. **Photo Gallery** - Polaroid-style photos of your moments together
+3. **Date & Time Selection** - Interactive calendar and time picker
+4. **Valentine Question** - "Will you be my Valentine?" with two response options
+5. **Final Message** - Sweet closing message
 
 ---
 
@@ -78,12 +90,10 @@ Find this section around line 160:
 </p>
 ```
 
-#### Love Message Section
-Find this section around line 210:
+#### Date & Time Section
+Find this section around line 220 to customize the title:
 ```html
-<p>
-    I want you to know that every moment spent with you is a treasure...
-</p>
+<h2 class="date-time-title">When should our date be? 💖</h2>
 ```
 
 #### Final Message
@@ -95,6 +105,15 @@ const CUSTOM_MESSAGE = "No matter what, I'm grateful for you. ✨";
 ---
 
 ## 🎨 Customization Guide
+
+### Date & Time Feature
+
+The date/time picker automatically:
+- **Prevents past dates** - Only allows selecting today or future dates
+- **Stores selection** - Saves the date/time in browser localStorage
+- **Beautiful formatting** - Shows like "Saturday, February 14, 2026 at 7:00 PM"
+- **Sparkle animation** - Creates sparkles when date is saved
+- **Mobile-friendly** - Uses native date/time pickers that work on all devices
 
 ### Change Colors
 
@@ -173,6 +192,83 @@ No additional configuration needed!
 ---
 
 ## 🚀 Deployment
+
+### How the Date Selection Works
+
+When she selects a date and time:
+1. The inputs are validated to ensure both are filled
+2. The date is formatted beautifully (e.g., "Saturday, February 14, 2026 at 7:00 PM")
+3. It's stored in the browser's localStorage (persists even if she closes the page!)
+4. A sparkle animation celebrates the selection
+5. The confirmation message appears with the selected date/time
+
+---
+
+## 🎁 Quick Start Checklist
+
+- [ ] Open `index.html` in a text editor
+- [ ] Change `[HER NAME HERE]` to her actual name (line 325)
+- [ ] Replace placeholder images with your photos
+- [ ] Customize the hero intro message
+- [ ] (Optional) Change colors to match your preference
+- [ ] Test the date picker on mobile
+- [ ] Test on mobile by opening in a phone browser
+- [ ] Share the link or file with her!
+
+---
+
+## 💡 Tips & Tricks
+
+1. **Take a screenshot** of the success page and date confirmation for a cute keepsake
+2. **The date picker** automatically prevents selecting past dates
+3. **Date is stored** - If she reloads the page, her selected date persists
+4. **Mobile friendly** - Uses native date/time pickers that work beautifully on phones
+5. **Add more photos** by copying the gallery item template
+6. **Mobile preview** - Open DevTools (F12) and toggle device toolbar
+7. **Test everything** before sending - click all buttons, scroll through all sections, test the date picker
+8. **Customize the emoji** - Replace any emoji with your favorites!
+
+---
+
+## 🐛 Troubleshooting
+
+**Date picker not showing?**
+- Modern browsers support date/time inputs natively
+- On older browsers, it falls back to text input (still works!)
+- Test on the actual device she'll use
+
+**Images not showing?**
+- Check that image URLs are correct
+- Make sure image files are in the same folder as `index.html` (if using local files)
+- Try absolute URLs (full web addresses) instead of relative paths
+
+**Music not playing?**
+- Some browsers block autoplay - she'll need to click the 🎵 button first
+- Make sure the audio URL is accessible and not blocked
+
+**Name not updating?**
+- Make sure you saved the file after editing
+- Hard refresh the browser (Ctrl+F5 or Cmd+Shift+R)
+- Try using the URL method: `index.html?name=Sarah`
+
+**Date not saving?**
+- Check browser console for errors (F12)
+- Make sure localStorage is enabled in the browser
+- Try in a different browser
+
+---
+
+## 💕 Extra Ideas
+
+- Add a countdown timer to the selected date
+- Include a "Add to Calendar" button after date is selected
+- Add a map showing the date location
+- Include a playlist of your favorite songs together
+- Add a gift idea section with linked Amazon wishlist
+- Include suggested date activities based on the time selected
+- Create a follow-up page with date ideas and planning
+
+---
 
 ### Option 1: Share as File
 Simply send the `index.html` file to her via email or file sharing.
