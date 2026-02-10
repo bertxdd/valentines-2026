@@ -273,144 +273,6 @@
             transform: rotate(0deg) scale(1.05);
         }
 
-        /* ==================== DATE & TIME PICKER SECTION ==================== */
-        .date-time-section {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, var(--cream) 0%, #FFE5ED 100%);
-            text-align: center;
-            display: none;
-        }
-
-        .date-time-section.visible {
-            display: block;
-        }
-
-        .date-time-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 50px 40px;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(231, 84, 128, 0.25);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .date-time-emoji {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: heartBeat 1.5s infinite;
-        }
-
-        .date-time-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 6vw, 2.5rem);
-            color: var(--soft-red);
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        .input-group {
-            margin-bottom: 30px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 1.1rem;
-            border: 2px solid var(--primary-pink);
-            border-radius: 50px;
-            background: var(--cream);
-            color: var(--text-dark);
-            font-family: 'Montserrat', sans-serif;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--dark-pink);
-            box-shadow: 0 0 20px rgba(231, 84, 128, 0.3);
-            background: white;
-        }
-
-        .input-group input:hover {
-            border-color: var(--dark-pink);
-            box-shadow: 0 4px 15px rgba(231, 84, 128, 0.2);
-        }
-
-        .save-date-btn {
-            padding: 18px 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(135deg, var(--dark-pink) 0%, var(--soft-red) 100%);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(231, 84, 128, 0.3);
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 20px;
-        }
-
-        .save-date-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 12px 35px rgba(231, 84, 128, 0.5);
-        }
-
-        .save-date-btn:active {
-            transform: scale(0.95);
-        }
-
-        .date-confirmation {
-            display: none;
-            margin-top: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--primary-pink) 0%, #FFD4E5 100%);
-            border-radius: 20px;
-            animation: sparkle 1s ease-out;
-        }
-
-        .date-confirmation.active {
-            display: block;
-        }
-
-        .date-confirmation p {
-            font-size: 1.3rem;
-            color: var(--soft-red);
-            font-weight: 500;
-            line-height: 1.8;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; transform: scale(1.02); }
-        }
-
         /* ==================== QUESTION SECTION ==================== */
         .question-section {
             padding: 100px 20px;
@@ -576,17 +438,7 @@
                 gap: 20px;
             }
 
-            .date-time-container {
-                padding: 35px 25px;
-            }
-
-            .date-time-title {
-                font-size: 1.8rem;
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
+            .question-text {
             .hero {
                 padding: 30px 15px;
             }
@@ -614,21 +466,6 @@
             .section-title {
                 font-size: 1.5rem;
                 margin-bottom: 40px;
-            }
-
-            .date-time-container {
-                padding: 25px 20px;
-            }
-
-            .input-group input {
-                padding: 12px 15px;
-                font-size: 1rem;
-            }
-
-            .save-date-btn {
-                width: 100%;
-                padding: 15px 30px;
-                font-size: 1rem;
             }
 
             .question-text {
@@ -774,32 +611,6 @@
         </div>
     </section>
 
-    <!-- ==================== DATE & TIME SELECTION SECTION ==================== -->
-    <section class="date-time-section" id="dateTime">
-        <div class="container">
-            <div class="date-time-container">
-                <div class="date-time-emoji">💕</div>
-                <h2 class="date-time-title">When should our date be? 💖</h2>
-                
-                <div class="input-group">
-                    <label for="dateInput">Pick a Date 📅</label>
-                    <input type="date" id="dateInput" required>
-                </div>
-                
-                <div class="input-group">
-                    <label for="timeInput">Pick a Time ⏰</label>
-                    <input type="time" id="timeInput" required>
-                </div>
-                
-                <button class="save-date-btn" onclick="saveDate()">Save Our Date 💖</button>
-                
-                <div class="date-confirmation" id="dateConfirmation">
-                    <p id="confirmationText">I can't wait! 🥰</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ==================== THE QUESTION SECTION ==================== -->
     <section class="question-section">
         <div class="container">
@@ -846,66 +657,7 @@
             setupMusicToggle();
             updateName();
             setupScrollBehavior();
-            setupDateInputs();
         });
-
-        // ==================== DATE & TIME SETUP ==================== 
-        function setupDateInputs() {
-            const dateInput = document.getElementById('dateInput');
-            const today = new Date().toISOString().split('T')[0];
-            dateInput.setAttribute('min', today);
-        }
-
-        // ==================== SAVE DATE FUNCTION ==================== 
-        function saveDate() {
-            const dateInput = document.getElementById('dateInput');
-            const timeInput = document.getElementById('timeInput');
-            const confirmation = document.getElementById('dateConfirmation');
-            const confirmationText = document.getElementById('confirmationText');
-            
-            if (!dateInput.value || !timeInput.value) {
-                alert('Please select both a date and time! 💕');
-                return;
-            }
-            
-            // Format the date nicely
-            const selectedDate = new Date(dateInput.value + 'T' + timeInput.value);
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const formattedDate = selectedDate.toLocaleDateString('en-US', options);
-            const formattedTime = selectedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-            
-            // Store in localStorage
-            localStorage.setItem('valentineDate', dateInput.value);
-            localStorage.setItem('valentineTime', timeInput.value);
-            
-            // Show confirmation with animation
-            confirmationText.innerHTML = `I can't wait to see you on<br><strong>${formattedDate}</strong><br>at <strong>${formattedTime}</strong>! 🥰✨`;
-            confirmation.classList.add('active');
-            
-            // Create sparkle effect
-            createSparkles();
-        }
-
-        // ==================== SPARKLE EFFECT ==================== 
-        function createSparkles() {
-            const sparkleEmojis = ['✨', '💖', '💕', '⭐', '🌟'];
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const sparkle = document.createElement('div');
-                    sparkle.style.position = 'fixed';
-                    sparkle.style.fontSize = '1.5rem';
-                    sparkle.style.pointerEvents = 'none';
-                    sparkle.style.zIndex = '999';
-                    sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
-                    sparkle.style.left = (Math.random() * window.innerWidth) + 'px';
-                    sparkle.style.top = (Math.random() * window.innerHeight) + 'px';
-                    sparkle.style.animation = 'sparkleFloat 2s ease-out forwards';
-                    
-                    document.body.appendChild(sparkle);
-                    setTimeout(() => sparkle.remove(), 2000);
-                }, i * 50);
-            }
-        }
 
         // ==================== FLOATING HEARTS ==================== 
         function createFloatingHearts() {
@@ -987,28 +739,13 @@
                 
                 emoji.textContent = '🎉';
                 title.textContent = 'Yay! Let\'s pick a date! 💕';
-                text.textContent = 'Scroll down to choose when our date should be!';
+                text.textContent = 'Taking you to the date planner...';
                 
                 successMessage.classList.add('active');
                 
-                // After 2 seconds, hide overlay, reveal date section, and scroll to it
+                // After 2 seconds, navigate to date page
                 setTimeout(() => {
-                    successMessage.classList.remove('active');
-                    
-                    // Show and scroll to date/time section
-                    const dateSection = document.getElementById('dateTime');
-                    if (dateSection) {
-                        dateSection.classList.add('visible');
-                        
-                        setTimeout(() => {
-                            dateSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            
-                            // Add a pulse effect to the date section
-                            setTimeout(() => {
-                                dateSection.querySelector('.date-time-container').style.animation = 'pulse 0.5s ease-out';
-                            }, 500);
-                        }, 100);
-                    }
+                    window.location.href = 'date.html';
                 }, 2000);
             }
         }

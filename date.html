@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Special Date 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #FFB6D9;
+            --dark-pink: #E75480;
+            --soft-red: #C73E6D;
+            --cream: #FFF8F5;
+            --white: #FFFFFF;
+            --gold: #D4AF81;
+            --text-dark: #3D3D3D;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #FFE5ED 0%, #FFF0F5 50%, var(--cream) 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            opacity: 0.2;
+            font-size: 2rem;
+            animation: float-up 10s infinite ease-in;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .date-page-container {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            padding: 60px 50px;
+            box-shadow: 0 25px 60px rgba(231, 84, 128, 0.3);
+            text-align: center;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .top-emoji {
+            font-size: 6rem;
+            margin-bottom: 30px;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.15); }
+            50% { transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            color: var(--soft-red);
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--dark-pink);
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .input-wrapper {
+            background: linear-gradient(135deg, #FFF8F5 0%, #FFE5ED 100%);
+            padding: 40px 30px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+            border: 3px solid var(--primary-pink);
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        .input-group:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 1.3rem;
+            border: 3px solid var(--primary-pink);
+            border-radius: 50px;
+            background: white;
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--dark-pink);
+            box-shadow: 0 0 30px rgba(231, 84, 128, 0.4);
+            transform: scale(1.02);
+        }
+
+        .input-group input:hover {
+            border-color: var(--dark-pink);
+            box-shadow: 0 5px 20px rgba(231, 84, 128, 0.25);
+        }
+
+        .save-btn {
+            width: 100%;
+            padding: 22px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--dark-pink) 0%, var(--soft-red) 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(231, 84, 128, 0.4);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .save-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .save-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(231, 84, 128, 0.6);
+        }
+
+        .save-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .save-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Confirmation Message */
+        .confirmation {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, #FFD4E5 100%);
+            border-radius: 25px;
+            animation: popIn 0.6s ease-out;
+            border: 3px solid var(--dark-pink);
+        }
+
+        .confirmation.active {
+            display: block;
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .confirmation-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .confirmation p {
+            font-size: 1.4rem;
+            color: var(--soft-red);
+            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .confirmation .date-display {
+            font-size: 1.6rem;
+            color: var(--dark-pink);
+            font-weight: 700;
+            margin: 15px 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid var(--dark-pink);
+            border-radius: 50px;
+            background: white;
+            color: var(--dark-pink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .back-btn:hover {
+            background: var(--dark-pink);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(231, 84, 128, 0.3);
+        }
+
+        /* Sparkle Animation */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 2rem;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-40px) scale(1.3) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-80px) scale(0.5) rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .date-page-container {
+                padding: 40px 30px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 40px;
+            }
+
+            .top-emoji {
+                font-size: 4rem;
+            }
+
+            .input-wrapper {
+                padding: 30px 20px;
+            }
+
+            .input-group input {
+                padding: 15px 20px;
+                font-size: 1.1rem;
+            }
+
+            .save-btn {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+            }
+
+            .confirmation p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .date-page-container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .top-emoji {
+                font-size: 3rem;
+            }
+
+            .input-group label {
+                font-size: 1rem;
+            }
+
+            .input-group input {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Main Container -->
+    <div class="date-page-container">
+        <div class="top-emoji">💖</div>
+        <h1>When should our date be?</h1>
+        <p class="subtitle">Let's plan something special together ✨</p>
+
+        <div class="input-wrapper">
+            <div class="input-group">
+                <label for="dateInput">📅 Choose a Date</label>
+                <input type="date" id="dateInput" required>
+            </div>
+
+            <div class="input-group">
+                <label for="timeInput">⏰ Choose a Time</label>
+                <input type="time" id="timeInput" required>
+            </div>
+        </div>
+
+        <button class="save-btn" onclick="saveDate()">
+            <span>Save Our Date 💕</span>
+        </button>
+
+        <div class="confirmation" id="confirmation">
+            <div class="confirmation-emoji">🎉</div>
+            <p>I can't wait to see you!</p>
+            <div class="date-display" id="dateDisplay"></div>
+            <p>It's going to be amazing! 🥰✨</p>
+            <a href="index.html" class="back-btn">← Back to Main Page</a>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💓'];
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        // Setup date inputs
+        function setupDateInputs() {
+            const dateInput = document.getElementById('dateInput');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+            
+            // Load saved date if exists
+            const savedDate = localStorage.getItem('valentineDate');
+            const savedTime = localStorage.getItem('valentineTime');
+            if (savedDate) dateInput.value = savedDate;
+            if (savedTime) document.getElementById('timeInput').value = savedTime;
+        }
+
+        // Save date function
+        function saveDate() {
+            const dateInput = document.getElementById('dateInput');
+            const timeInput = document.getElementById('timeInput');
+            const confirmation = document.getElementById('confirmation');
+            const dateDisplay = document.getElementById('dateDisplay');
+            
+            if (!dateInput.value || !timeInput.value) {
+                alert('Please select both a date and time! 💕');
+                return;
+            }
+            
+            // Format the date beautifully
+            const selectedDate = new Date(dateInput.value + 'T' + timeInput.value);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = selectedDate.toLocaleDateString('en-US', options);
+            const formattedTime = selectedDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+            
+            // Store in localStorage
+            localStorage.setItem('valentineDate', dateInput.value);
+            localStorage.setItem('valentineTime', timeInput.value);
+            
+            // Display confirmation
+            dateDisplay.innerHTML = `<strong>${formattedDate}</strong><br>at <strong>${formattedTime}</strong>`;
+            confirmation.classList.add('active');
+            
+            // Create sparkle effect
+            createSparkles();
+            
+            // Scroll to confirmation
+            setTimeout(() => {
+                confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        // Create sparkles
+        function createSparkles() {
+            const sparkleEmojis = ['✨', '💖', '💕', '⭐', '🌟', '💫', '🎉'];
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+                    sparkle.style.left = (Math.random() * window.innerWidth) + 'px';
+                    sparkle.style.top = (Math.random() * window.innerHeight) + 'px';
+                    sparkle.style.animation = 'sparkleFloat 2s ease-out forwards';
+                    
+                    document.body.appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 40);
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingHearts();
+            setupDateInputs();
+        });
+    </script>
+</body>
+</html>
